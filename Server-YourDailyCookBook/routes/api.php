@@ -12,6 +12,6 @@ Route::group(['prefix' => 'guest'], function(){
 });
 
 Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function(){
-    Route::post('logout', 'logout');
-    Route::post('refresh', 'refresh');
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('refresh',[AuthController::class, 'refresh']);
 });

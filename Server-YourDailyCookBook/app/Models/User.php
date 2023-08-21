@@ -61,4 +61,24 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public function Recipes(){
+        return $this->hasMany(Recipe::class, 'user_id');
+    }
+
+    public function Comment(){
+        return $this->hasMany(Comment::class, 'user_id');
+    }
+
+    public function likes(){
+        return $this->hasMany(like::class, 'user_id');
+    }
+
+    public function ShoppingList(){
+        return $this->hasMany(Shoppinglist::class, 'user_id');
+    }
+
+    public function Calendar(){
+        return $this->hasMany(Calendar::class, 'user_id');
+    }
+
 }

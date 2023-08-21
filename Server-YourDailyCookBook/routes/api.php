@@ -16,5 +16,6 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function(){
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh',[AuthController::class, 'refresh']);
     Route::post('create_recipe', [RecipeController::class, 'CreateRecipe']);
-    Route::get('get_recipe', [RecipeController::class, 'getRecipes']);
+    Route::get('my_recipe', [RecipeController::class, 'getMyRecipes']);
+    Route::get('all_recipes', [RecipeController::class, 'getRecipes']);
 });

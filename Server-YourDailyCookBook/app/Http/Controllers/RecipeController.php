@@ -33,7 +33,7 @@ class RecipeController extends Controller
         ]);
     }
 
-    function getRecipes(){
+    function getMyRecipes(){
         $user = Auth::user();
         $user_id = $user->id;
         $recipe = $user->Recipes()->get();
@@ -41,6 +41,15 @@ class RecipeController extends Controller
         return response()->json([
             'status' => 'success',
             'user_id' => $user_id,
+            'data' => $recipe
+        ]);
+    }
+
+    function getRecipes(){
+        $recipe = Recipe::with('user')->get();
+
+        return response()->json([
+            'status' => 'success',
             'data' => $recipe
         ]);
     }

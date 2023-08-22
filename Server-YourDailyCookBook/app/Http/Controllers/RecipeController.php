@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Recipe;
 use App\Models\Like;
+use App\Models\Comment;
 use Auth;
 
 class RecipeController extends Controller
@@ -49,7 +50,7 @@ class RecipeController extends Controller
 
     function getRecipes(){
 
-        $recipe = Recipe::with('user')->get();
+        $recipe = Recipe::with('user')->with('Comment')->get();
 
         return response()->json([
             'status' => 'success',
@@ -112,4 +113,27 @@ class RecipeController extends Controller
         }
 
     }
+
+    public function addComment(Request $request){
+
+        $user = Auth::user();
+        $user_id = $user->id;
+
+        // $comment = $user->Comment()
+        $comment = new Comment;
+        $comment->user_id = $user_id;
+        $comment->recipe_id = $request->recipe_id;
+        $comment->comment = $request->comment;
+        $comment->save();
+
+        return response()->json([
+            'status' => 'successfully added comment',
+            'data' => $comment
+        ]);
+    }
+
+    // public function recipeComments(){
+
+        
+    // }
 }

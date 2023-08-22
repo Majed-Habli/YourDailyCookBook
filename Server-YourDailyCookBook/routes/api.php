@@ -20,4 +20,5 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function(){
     Route::get('all_recipes', [RecipeController::class, 'getRecipes']);
     Route::get('liked_recipes', [RecipeController::class, 'likedRecipes']);
     Route::post('like_recipe', [RecipeController::class, 'likeRecipe']);
+    Route::post('add_comment', [RecipeController::class, 'addComment']);
 });

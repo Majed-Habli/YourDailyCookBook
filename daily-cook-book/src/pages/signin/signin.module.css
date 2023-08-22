@@ -30,12 +30,27 @@
     height: 33px;
     padding-left: 1rem;
     border: 1px solid #c0c0c0;
+    background-color: #eeeded;
+    border-radius: 4px;
 }
 
 .button_container{
     width: 100%;
     display: flex;
-    /* align-items: flex-start; */
     justify-content: flex-end;
-    background-color: aqua;
+}
+
+.button_container button{
+    width: 100px;
+    height: 28px;
+}
+
+.row{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+label{
+    font-size: 14px;
 }

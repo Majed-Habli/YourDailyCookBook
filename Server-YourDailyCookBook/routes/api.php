@@ -18,4 +18,6 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function(){
     Route::post('create_recipe', [RecipeController::class, 'CreateRecipe']);
     Route::get('my_recipe', [RecipeController::class, 'getMyRecipes']);
     Route::get('all_recipes', [RecipeController::class, 'getRecipes']);
+    Route::get('liked_recipes', [RecipeController::class, 'likedRecipes']);
+    Route::post('like_recipe', [RecipeController::class, 'likeRecipe']);
 });

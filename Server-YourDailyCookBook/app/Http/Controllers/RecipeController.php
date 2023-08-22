@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Recipe;
+use App\Models\Like;
 use Auth;
 
 class RecipeController extends Controller
@@ -34,6 +35,7 @@ class RecipeController extends Controller
     }
 
     function getMyRecipes(){
+
         $user = Auth::user();
         $user_id = $user->id;
         $recipe = $user->Recipes()->get();
@@ -46,11 +48,68 @@ class RecipeController extends Controller
     }
 
     function getRecipes(){
+
         $recipe = Recipe::with('user')->get();
 
         return response()->json([
             'status' => 'success',
             'data' => $recipe
         ]);
+    }
+
+    function likedRecipes(){
+
+        try{
+
+            $user = Auth::user();
+
+            $liked = $user->likes()->with('Recipe')->get();
+
+            return response()->json([
+                'status' => 'success',
+                'data' => $liked
+            ]);
+
+        }catch(error){
+
+            return response()->json([
+                'status' => 'no likes for this user'
+            ]);
+        }
+
+    }
+
+    function likeRecipe(Request $request){
+
+        $user = Auth::user();
+        $user_id = $user->id;
+        $recipe_id = $request->recipe_id;
+
+        $liked = Like::where([
+            "recipe_id" => $recipe_id,
+            "user_id" => $user_id,
+        ])->first();
+
+        if($liked){
+
+            $liked->delete();
+            return response()->json([
+                'status' => 'it exists, deleted',
+            ]);
+
+        }else{
+
+            $like = new Like;
+            $like->user_id = $user_id;
+            $like->recipe_id = $request->recipe_id;
+            $like->save();
+    
+            return response()->json([
+                'status' => 'success',
+                'user_id' => $user_id,
+                'data' => $like
+            ]);
+        }
+
     }
 }

@@ -119,7 +119,6 @@ class RecipeController extends Controller
         $user = Auth::user();
         $user_id = $user->id;
 
-        // $comment = $user->Comment()
         $comment = new Comment;
         $comment->user_id = $user_id;
         $comment->recipe_id = $request->recipe_id;
@@ -132,8 +131,16 @@ class RecipeController extends Controller
         ]);
     }
 
-    // public function recipeComments(){
+    public function searchRecipe($searchRecipes){
 
-        
-    // }
+        $recipes = Recipe::where('name', 'LIKE', "%$searchRecipes%")
+        ->orWhere('cousine', 'LIKE', "%$searchRecipes%")
+        ->orWhere('ingredients', 'LIKE', "%$searchRecipes%")->get();
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $recipes,
+            'itemname' => $searchRecipes
+        ]);
+    }
 }

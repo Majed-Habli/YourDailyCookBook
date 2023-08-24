@@ -22,6 +22,7 @@ const Signin = () => {
             const data = await response.json();
             if(data.status === "success"){
                 console.log("success");
+                window.location.href = './user';
             }else{
                 console.log("user does not exist");
             }

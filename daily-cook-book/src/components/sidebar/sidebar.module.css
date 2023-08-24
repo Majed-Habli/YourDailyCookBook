@@ -1,37 +1,58 @@
 .sidebar {
-    width: 100px;
+    width: 170px;
     height: 100vh;
     display: flex;
-    position: fixed;
     flex-direction: column;
     align-items: center;
-    gap: 100px;
-    padding: 30px;
-    background-color: var(--black);
-    color: var(--white);
-  
-  }
-  
-  .sidebar .mid {
+    background-color: black;
+    color: white;
+}
+
+.top_container{
     display: flex;
     flex-direction: column;
-    height: 420px;
-    gap: 50px;
-  }
+    align-items: center;
+    justify-content: space-between;
+}
   
-  .logo {
+.mid {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    padding: 3rem 1rem;
+}
+
+.nav{
+    cursor: pointer;
+}
+
+.nav:hover{
+    color: rgb(205, 202, 202);
+}
+  
+.logo {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 15px;
     font-weight: bold;
-    padding: 10px;
-  }
+    margin-top: 2rem;
+}
   
-  .logo svg {
+.logo svg {
     width: 50px;
     height: 50px;
-  }
-  .one-navigate {
+    color: white;
+    fill: white;
+}
+
+.bottom{
+    flex: 1;
+    padding-bottom: 3rem;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    align-items: flex-end;
     cursor: pointer;
-  }
+}

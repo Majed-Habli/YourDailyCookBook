@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: black;
+    background-color: #37373b;
     color: white;
 }
 
@@ -25,6 +25,9 @@
 
 .nav{
     cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #909192;
 }
 
 .nav:hover{

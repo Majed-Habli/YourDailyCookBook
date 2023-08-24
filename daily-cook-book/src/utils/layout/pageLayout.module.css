@@ -3,12 +3,13 @@
 }
 
 .side_bar_container{
-    height: 600px;
+    height: 100%;
+    background-color: aqua;
 }
 
 .outlet_parent {
     width: 100%;
-    margin-left: 90px;
+    background-color: rgb(50, 177, 177);
 }
 
 .body_right{

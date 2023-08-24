@@ -1,7 +1,6 @@
 import React from "react";
 import {Outlet} from "react-router-dom";
 import styles from './pageLayout.module.css';
-// import Sidebar from "../../components/Sidebar/Sidebar";
 import Sidebar from "../../components/sidebar/sidebar";
 import { useNavigate } from "react-router-dom";
 
@@ -23,16 +22,13 @@ const PageLayout = () => {
     // ];
 
     return (
-        <div className="Parent_layout app dark">
-            <div className="side_bar_container">
+        <div className={styles.Parent_layout}>
+            <div className={styles.side_bar_container}>
                 <Sidebar/>
             </div>
-            <div className="outlet_parent">
+            <div className={styles.outlet_parent}>
                 <Outlet/>
             </div>
-            {/* <div className="body_right"> */}
-                {/* <Profile/> */}
-            {/* </div> */}
         </div>
     )
 }

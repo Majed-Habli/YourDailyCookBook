@@ -4,7 +4,7 @@ import styles from './sidebar.module.css'
 
 const Sidebar = (sidebarContent) => {
     const navigate = useNavigate();
-  const [content, useContent] = useState(sidebarContent ? sidebarContent : []);
+//   const [content, useContent] = useState(sidebarContent ? sidebarContent : []);
   return (
     <div className={styles.sidebar}>
         <div className={styles.top_container}>

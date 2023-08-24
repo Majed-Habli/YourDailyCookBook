@@ -31,7 +31,7 @@ const Signin = () => {
     }
 
     const Signup  = () => {
-        window.location.href = "./signup";
+        window.location.href = "./register";
     }
 
     return(

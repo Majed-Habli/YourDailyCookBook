@@ -142,3 +142,7 @@
 .card_body::-webkit-scrollbar {
     display: none;
   }
+
+  .PopUp_container{
+    z-index: 1;
+  }

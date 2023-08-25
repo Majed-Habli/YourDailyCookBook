@@ -1,10 +1,13 @@
 import React, { useState,useEffect } from "react";
 import styles from './dashboard.module.css'
+import PopUp from "../../components/popup/popup";
 
 const Home = () => {
     const [recipes, setRecipes] = useState([]);
     const [searcgresult, setSearchResult] = useState([]);
     const [search, setSearch] = useState('');
+    const [isShown, setIsShown] = useState(false);
+    console.log(isShown, "wht we have been waiting for")
 
     const getRecipes = async () => {
         try {
@@ -110,13 +113,18 @@ const Home = () => {
     const inputChange = (event) => {
         setSearch(event.target.value);
         searchFor();
-        };
+    };
+
+    const ShowModel = () => {
+        setIsShown(true);
+        console.log(isShown)
+    }
 
     return (
         <div className={styles.container}>
             <div className={styles.top_bar}>
                 <input type="text" placeholder="Searchy by name, cuisine, ingredients..." value={search} onChange={inputChange}/>
-                <button>Add recipe</button>
+                <button onClick={ShowModel}>Add recipe</button>
             </div>
             <div className={styles.body}>
                 <div className={styles.page_header}>Browse recipes: </div>
@@ -142,6 +150,9 @@ const Home = () => {
                     </div> 
                     ))}
                 </div>
+            </div>
+            <div className={styles.PopUp_container}>
+                {isShown && <PopUp onClick={isShown}/>}
             </div>
         </div>
     )

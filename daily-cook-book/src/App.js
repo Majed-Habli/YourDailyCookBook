@@ -6,6 +6,7 @@ import Register from "./pages/signup/signup";
 import Dashboard from "./pages/dashboard/dashboard";
 import PageLayout from "./utils/layout/pageLayout";
 import Liked from "./pages/liked/liked";
+import List from "./pages/mylist/mylist";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/user" element={<PageLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="/user/liked" element={<Liked />} />
+          <Route path="/user/myList" element={<List />} />
         </Route>
       </Routes>
     </BrowserRouter>

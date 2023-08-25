@@ -19,7 +19,7 @@ const Sidebar = (sidebarContent) => {
                 <div className={styles.nav}>Profile</div>
                 <div className={styles.nav} onClick={()=>navigate("/user")}>Dashboard</div>
                 <div className={styles.nav} onClick={()=>navigate("/user/liked")}>Liked</div>
-                <div className={styles.nav}>My-List</div>
+                <div className={styles.nav}onClick={()=>navigate("/user/myList")}>My-List</div>
             </div>
         </div>
       

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shoppinglist;
+use App\Models\user;
 use Auth;
 
 class ShoppingController extends Controller
@@ -27,7 +28,7 @@ class ShoppingController extends Controller
     public function shoppingList(){
 
         $user = Auth::user();
-        $list = $user->ShoppingList()->get();
+        $list = $user->ShoppingList()->with('RecipeShopingList')->get();
 
         return response()->json([
             'status' => 'success',

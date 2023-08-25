@@ -21,7 +21,12 @@ const Signin = () => {
             });
             const data = await response.json();
             if(data.status === "success"){
-                console.log("success");
+                // console.log("success");
+                // console.log("the full data" , data)
+                const token = data.authorisation.token;
+                localStorage.setItem("jwtToken", token);
+                // console.log("the name is " , data.user.name)
+                // console.log(token , "hereee")
                 window.location.href = './user';
             }else{
                 console.log("user does not exist");

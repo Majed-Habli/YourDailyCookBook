@@ -81,6 +81,32 @@ const Home = () => {
         }
     }
 
+    const addToCart = async (recipe_id) => {
+        try {
+            const body = {
+                recipe_id: recipe_id
+            }
+            const token = localStorage.getItem('jwtToken');
+            const parsebody = JSON.stringify(body);
+            const response_three = await fetch ("http://127.0.0.1:8000/api/user/add_to_list",{
+            method:"POST",
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: parsebody
+            });
+            const data = await response_three.json();
+            if(data.status === "success"){
+                console.log("item has been added")
+            }else{
+                console.log("failed to add")
+            }
+        }catch(error){
+            console.log("failed to call the api ",error);
+        }
+    }
+
     const inputChange = (event) => {
         setSearch(event.target.value);
         searchFor();
@@ -110,7 +136,7 @@ const Home = () => {
                             </div>
                             <div className={styles.card_right_bottom}>
                                 <button key={recipe.id} onClick={() => addToLike(recipe.id)}>like</button>
-                                <button>add to cart</button>
+                                <button onClick={() => addToCart(recipe.id)}>add to cart</button>
                             </div>
                         </div>
                     </div> 

@@ -3,6 +3,7 @@ import styles from './dashboard.module.css'
 
 const Home = () => {
     const [recipes, setRecipes] = useState([]);
+    const [search, setSearch] = useState('');
 
     const getRecipes = async () => {
         try {
@@ -56,10 +57,14 @@ const Home = () => {
         }
     }
 
+    const inputChange = (event) => {
+        setSearch(event.target.value);
+        };
+
     return (
         <div className={styles.container}>
             <div className={styles.top_bar}>
-                <input type="text" placeholder="Searchy by name, cuisine, ingredients..." />
+                <input type="text" placeholder="Searchy by name, cuisine, ingredients..." value={search} onChange={inputChange}/>
                 <button>Add recipe</button>
             </div>
             <div className={styles.body}>

@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
-import styles from './dashboard.module.css'
+import styles from './liked.module.css'
 
-const Home = () => {
+const Liked = () => {
     const [recipes, setRecipes] = useState([]);
     const [searcgresult, setSearchResult] = useState([]);
     const [search, setSearch] = useState('');
@@ -89,12 +89,12 @@ const Home = () => {
     return (
         <div className={styles.container}>
             <div className={styles.top_bar}>
-                <input type="text" placeholder="Searchy by name, cuisine, ingredients..." value={search} onChange={inputChange}/>
+                {/* <input type="text" placeholder="Searchy by name, cuisine, ingredients..." value={search} onChange={inputChange}/> */}
                 <button>Add recipe</button>
             </div>
             <div className={styles.body}>
-                <div className={styles.page_header}>Browse recipes: </div>
-                <div className={styles.card_body}>
+                <div className={styles.page_header}>Liked recipes: </div>
+                {/* <div className={styles.card_body}>
 
                     {recipes.map((recipe, index) =>(
 
@@ -115,10 +115,10 @@ const Home = () => {
                         </div>
                     </div> 
                     ))}
-                </div>
+                </div> */}
             </div>
         </div>
     )
 }
 
-export default Home;
+export default Liked;

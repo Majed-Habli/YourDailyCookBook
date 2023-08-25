@@ -63,25 +63,29 @@ const Home = () => {
                 <button>Add recipe</button>
             </div>
             <div className={styles.body}>
-                {recipes.map((recipe, index) =>(
+                <div className={styles.page_header}>Browse recipes: </div>
+                <div className={styles.card_body}>
 
-                <div key={index} className={styles.card}>
-                    <div className={styles.card_left}>
-                        <img src="/spiceyItalianPasta.jpg" alt="italianspicey pasta" />
-                    </div>
-                    <div className={styles.card_right}>
-                        <div className={styles.card_right_top}>
-                            <div className={styles.name}>{recipe.name}</div>
-                            <div className={styles.cuisine}>{recipe.cousine}</div>
-                            <div>{recipe.ingredients}</div>
+                    {recipes.map((recipe, index) =>(
+
+                    <div key={index} className={styles.card}>
+                        <div className={styles.card_left}>
+                            <img src="/spiceyItalianPasta.jpg" alt="italianspicey pasta" />
                         </div>
-                        <div className={styles.card_right_bottom}>
-                            <button key={recipe.id} onClick={() => addToLike(recipe.id)}>like</button>
-                            <button>add to cart</button>
+                        <div className={styles.card_right}>
+                            <div className={styles.card_right_top}>
+                                <div className={styles.name}>{recipe.name}</div>
+                                <div className={styles.cuisine}>{recipe.cousine}</div>
+                                <div>{recipe.ingredients}</div>
+                            </div>
+                            <div className={styles.card_right_bottom}>
+                                <button key={recipe.id} onClick={() => addToLike(recipe.id)}>like</button>
+                                <button>add to cart</button>
+                            </div>
                         </div>
-                    </div>
-                </div> 
-                ))}
+                    </div> 
+                    ))}
+                </div>
             </div>
         </div>
     )

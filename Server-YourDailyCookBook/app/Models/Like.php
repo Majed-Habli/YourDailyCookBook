@@ -10,10 +10,10 @@ class Like extends Model
     use HasFactory;
 
     public function User(){
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function Recipe(){
-        return $this->belongsTo(Recipe::class, 'id');
+        return $this->belongsTo(Recipe::class, 'recipe_id');
     }
 }

@@ -3,20 +3,19 @@ import styles from './liked.module.css'
 
 const Liked = () => {
     const [recipes, setRecipes] = useState([]);
-    const [searcgresult, setSearchResult] = useState([]);
-    const [search, setSearch] = useState('');
 
-    const getRecipes = async () => {
+    const likedRecipes = async () => {
         try {
 
         const token = localStorage.getItem('jwtToken');
-        const response = await fetch ("http://127.0.0.1:8000/api/user/all_recipes",{
+        const response = await fetch ("http://127.0.0.1:8000/api/user/liked_recipes",{
             method:"GET",
             headers: {
                 'Authorization': `Bearer ${token}`
             }
             });
             const data = await response.json();
+            console.log(data,"data")
             if(data.status === "success"){
                 setRecipes(data.data);
             }else{
@@ -28,8 +27,7 @@ const Liked = () => {
     }
 
     useEffect(()=>{
-        getRecipes();
-        searchFor(search);
+        likedRecipes();
     },[]);
 
     const addToLike = async (recipe_id) => {
@@ -59,42 +57,14 @@ const Liked = () => {
         }
     }
 
-    const searchFor = async (search) => {
-        try {
-            const token = localStorage.getItem('jwtToken');
-            const response_three = await fetch (`http://127.0.0.1:8000/api/user/search_recipe/${search}`,{
-            method:"GET",
-            headers: {
-                'Authorization': `Bearer ${token}`,
-            },
-
-            });
-            const data = await response_three.json();
-            if(data.status === "success"){
-                console.log("item is being searched")
-                setRecipes(data.data);
-            }else{
-                console.log("failed to search")
-            }
-        }catch(error){
-            console.log("failed to call the api ",error);
-        }
-    }
-
-    const inputChange = (event) => {
-        setSearch(event.target.value);
-        searchFor();
-        };
-
     return (
         <div className={styles.container}>
             <div className={styles.top_bar}>
-                {/* <input type="text" placeholder="Searchy by name, cuisine, ingredients..." value={search} onChange={inputChange}/> */}
                 <button>Add recipe</button>
             </div>
             <div className={styles.body}>
                 <div className={styles.page_header}>Liked recipes: </div>
-                {/* <div className={styles.card_body}>
+                <div className={styles.card_body}>
 
                     {recipes.map((recipe, index) =>(
 
@@ -104,18 +74,18 @@ const Liked = () => {
                         </div>
                         <div className={styles.card_right}>
                             <div className={styles.card_right_top}>
-                                <div className={styles.name}>{recipe.name}</div>
-                                <div className={styles.cuisine}>{recipe.cousine}</div>
-                                <div>{recipe.ingredients}</div>
+                                <div className={styles.name}>{recipe.recipe.name}</div>
+                                <div className={styles.cuisine}>{recipe.recipe.cousine}</div>
+                                <div>{recipe.recipe.ingredients}</div>
                             </div>
                             <div className={styles.card_right_bottom}>
-                                <button key={recipe.id} onClick={() => addToLike(recipe.id)}>like</button>
+                                <button key={recipe.id} onClick={() => addToLike(recipe.id)}>unlike</button>
                                 <button>add to cart</button>
                             </div>
                         </div>
                     </div> 
                     ))}
-                </div> */}
+                </div>
             </div>
         </div>
     )
